@@ -112,11 +112,11 @@ Since server version 4.0, some basic sorting is available using the `sort` query
 ##### Permissions
 Requires an active session and (if specified) membership to the channel or team being selected from."
   ([] (users-get-with-http-info nil))
-  ([{:keys [page per-page in-team not-in-team in-channel not-in-channel group-constrained without-team sort ]}]
+  ([{:keys [page per-page in-team not-in-team in-channel not-in-channel group-constrained without-team sort active inactive]}]
    (call-api "/users" :get
              {:path-params   {}
               :header-params {}
-              :query-params  {"page" page "per_page" per-page "in_team" in-team "not_in_team" not-in-team "in_channel" in-channel "not_in_channel" not-in-channel "group_constrained" group-constrained "without_team" without-team "sort" sort }
+              :query-params  {"page" page "per_page" per-page "in_team" in-team "not_in_team" not-in-team "in_channel" in-channel "not_in_channel" not-in-channel "group_constrained" group-constrained "without_team" without-team "sort" sort "active" active "inactive" inactive}
               :form-params   {}
               :content-types []
               :accepts       ["application/json"]
